@@ -37,10 +37,25 @@ def handle_hello():
 
 @app.route('/members', methods=['POST'])
 def get_one_member():
-    users = request.json()
-    member = jackson_family.add_member(users)
+    users = request.json
+    users["id"] = jackson_family._generateId()
+    jackson_family.add_member(users)
 
     return "add",200
+
+@app.route('/members/<int:id>', methods=['DELETE'])
+def delete_member(id):
+    jackson_family.add_member(id)
+
+    return "delete",200
+
+@app.route('/members/<int:id>', methods=['GET'])
+def get_member(id):
+    member = jackson_family.get_member(id)
+
+    return jsonify(member),200
+
+
 
 
 

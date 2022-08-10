@@ -44,14 +44,18 @@ class FamilyStructure:
         
 
     def delete_member(self, id):
-        member =self._members
-        self._members.remove(member)
+        for member in self._members:
+            if member["id"] == id:
+                x = member
+        self._members.remove(x)
         
     
 
     def get_member(self, id):
-        menber=self._members
-        return member
+        for member in self._members:
+            if member["id"] == id:
+                x = member
+        return x
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
